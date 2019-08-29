@@ -8,4 +8,4 @@ public:
   ~Node(void);
   void set_value(T valor);
   T get_value();  
-}
+};
