@@ -33,7 +33,7 @@ void ForwardList<T>::push_back(const T& element)
 template<typename T>
 void ForwardList<T>::push_front(const T& element)
 {
-
+   
 }
 template<typename T>
 Node<T>* ForwardList<T>::pop_back(void)
