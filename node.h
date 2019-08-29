@@ -1,3 +1,6 @@
+#ifndef NODO
+#define NODO
+
 template <typename T>
 class Node {
 protected:
@@ -8,4 +11,6 @@ public:
   ~Node(void);
   void set_value(T valor);
   T get_value();  
-}
+};
+
+#endif
