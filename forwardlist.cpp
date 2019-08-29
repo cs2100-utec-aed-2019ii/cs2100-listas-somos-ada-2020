@@ -1,7 +1,8 @@
 #include "forwardlist.h"
 
 ForwardList(void)
-{
+{   
+   *head = null;
 }
 ~ForwardList(void)
 {
@@ -20,7 +21,7 @@ void push_back(const T& element)
 }
 void push_front(const T& element)
 {
-    
+   
 }
 Node<T>* pop_back(void)
 {
