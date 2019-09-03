@@ -67,12 +67,38 @@ T ForwardList<T>::back(void)
 template <typename T>
 void ForwardList<T>::push_back(const T& element)
 {
-  
+   Node<T> *newnode = new Node<T> ();
+   newnode->set_value(element);
+    Node<T> *temp = head;
+ 
+    if (!head) {
+        head = newnode;
+    } 
+    else {
+        while(temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newnode;
+    } 
 }
 template<typename T>
 void ForwardList<T>::push_front(const T& element)
 {
-  
+  Node<T> *newnode = new Node<T> ();
+  newnode->set_value(element);
+    Node<T> *temp = head;
+ 
+    if (!head) {
+        head = newnode;
+    } 
+    else {
+        newnode->next = head;
+        head = newnode;
+ 
+        while (temp) {
+            temp = temp->next;
+        }
+    } 
 }
 template<typename T>
 Node<T>* ForwardList<T>::pop_back(void)
