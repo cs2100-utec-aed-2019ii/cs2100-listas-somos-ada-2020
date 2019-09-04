@@ -161,9 +161,10 @@ template<typename T>
 unsigned int ForwardList<T>::size(void)
 {
   unsigned int size=0;
-  while(head!=NULL){
+  Node<T> *temp=head;
+  while(temp!=NULL){
     size++;
-    head=head->next;
+    temp=temp->next;
   }
   return size;
 }
