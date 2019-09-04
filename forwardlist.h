@@ -17,7 +17,7 @@ public:
   void push_front(const T& element);
   Node<T>* pop_back(void);
   Node<T>* pop_front(void);
-  T& operator[] (const int&);
+  T& operator[] (const int& posicion);
   
   bool empty(void);
   unsigned int size(void);
@@ -67,53 +67,72 @@ T ForwardList<T>::back(void)
 template <typename T>
 void ForwardList<T>::push_back(const T& element)
 {
-   Node<T> *newnode = new Node<T> ();
-   newnode->set_value(element);
+  if(head)
+  {
     Node<T> *temp = head;
- 
-    if (!head) {
-        head = newnode;
-    } 
-    else {
-        while(temp->next != NULL) {
-            temp = temp->next;
-        }
-        temp->next = newnode;
-    } 
+    while(temp->next)
+    {
+      temp = temp->next;
+    }
+    temp->next = new Node<T>;
+    temp->next->set_value(element);
+    return;
+  }
+  head = new Node<T>;
+  head->set_value(element);
 }
 template<typename T>
 void ForwardList<T>::push_front(const T& element)
 {
-  Node<T> *newnode = new Node<T> ();
-  newnode->set_value(element);
-    Node<T> *temp = head;
- 
-    if (!head) {
-        head = newnode;
-    } 
-    else {
-        newnode->next = head;
-        head = newnode;
- 
-        while (temp) {
-            temp = temp->next;
-        }
-    } 
+    if(head)
+    {
+        Node<T> *temp = new Node<T>;
+        temp->set_value(element);
+        Node<T> *temp2 = head;
+        head = temp;
+        head->next = temp2;
+        return;
+    }
+    head = new Node<T>;
+    head->set_value(element);
 }
 template<typename T>
 Node<T>* ForwardList<T>::pop_back(void)
 {
-  
+ 
 }
+
 template<typename T>
 Node<T>* ForwardList<T>::pop_front(void)
 {
-   
+  if(head !=NULL){
+    Node<T> temp;
+    temp=*head;
+    Node<T> *aux_borrar;
+    aux_borrar=head;
+    
+    head=head->next;
+    delete aux_borrar;
+    return &temp;
+  }else{
+    return NULL;
+  }    
+  std::cout << "HEWO" << std::endl;
 }
 template<typename T>
-T& ForwardList<T>::operator[] (const int&)
+T& ForwardList<T>::operator[] (const int& posicion)
 {
-
+  if(head)
+  {
+    int temp2;
+    Node<T> *temp = head;
+    for(int i = 0; i < posicion; i++)
+    {
+      temp = temp->next;
+    }
+    temp2 = temp->get_value();
+    return temp2;
+  }
 }
 template<typename T>
 bool ForwardList<T>::empty(void)
@@ -128,7 +147,7 @@ unsigned int ForwardList<T>::size(void)
 template<typename T>
 void ForwardList<T>::clear(void)
 {
-
+  
 }
 template<typename T>
 ForwardList<T>& ForwardList<T>::sort(void)
