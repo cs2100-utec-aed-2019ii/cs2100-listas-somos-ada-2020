@@ -99,7 +99,22 @@ void ForwardList<T>::push_front(const T& element)
 template<typename T>
 Node<T>* ForwardList<T>::pop_back(void)
 {
- 
+   if(head==NULL) {
+    return NULL;
+  }
+  else if(head->next==NULL){
+    delete head;
+    return NULL;
+  }
+  Node<T> *temp1 = head;
+  Node<T> temp2;
+  while (temp1->next->next) {
+    temp1 = temp1->next;
+  }
+  temp2 = *temp1->next;
+  delete temp1->next;
+  temp1->next=NULL; 
+  return &temp2; 
 }
 
 template<typename T>
@@ -117,7 +132,6 @@ Node<T>* ForwardList<T>::pop_front(void)
   }else{
     return NULL;
   }    
-  std::cout << "HEWO" << std::endl;
 }
 template<typename T>
 T& ForwardList<T>::operator[] (const int& posicion)
