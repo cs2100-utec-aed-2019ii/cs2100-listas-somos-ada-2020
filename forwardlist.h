@@ -151,17 +151,31 @@ T& ForwardList<T>::operator[] (const int& posicion)
 template<typename T>
 bool ForwardList<T>::empty(void)
 {
-
+  if(head!=NULL){
+    return true;
+  }else{
+    return false;
+  }
 }
 template<typename T>
 unsigned int ForwardList<T>::size(void)
 {
-
+  unsigned int size=0;
+  while(head!=NULL){
+    size++;
+    head=head->next;
+  }
+  return size;
 }
 template<typename T>
 void ForwardList<T>::clear(void)
 {
-  
+  Node<T> *aux=head;
+  while(head!=NULL) {
+    head = head->next;
+    delete aux;
+    aux=head;
+  }
 }
 template<typename T>
 ForwardList<T>& ForwardList<T>::sort(void)

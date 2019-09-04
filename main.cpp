@@ -13,6 +13,10 @@ int main()
   owo->pop_front();
   cout << (*owo)[2] << endl;
   cout << owo->front() << endl;
+  cout<< owo->empty()<<endl;
+  cout<< owo->size()<<endl;
+  owo->clear();
+  cout << owo->front() << endl;
   delete owo;
   return 0;
 }
