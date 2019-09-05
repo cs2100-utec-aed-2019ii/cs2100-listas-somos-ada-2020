@@ -5,20 +5,12 @@ template <typename T>
 class Node {
 protected:
   T value;
+  Node<T> * next;
 public:
-  Node<T>* next;
-  Node(void){}
-  ~Node(void){}
-  void set_value(T valor)
-  {
-    value = valor;
-  }
-
-  T get_value()
-  {
-    return Node<T>::value;
-  }
-
+  Node(void);
+  ~Node(void);
+  void set_value(T valor);
+  T get_value();  
 };
 
 #endif
