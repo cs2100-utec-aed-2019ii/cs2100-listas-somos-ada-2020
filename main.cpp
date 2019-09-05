@@ -15,8 +15,11 @@ int main()
   cout << owo->front() << endl;
   cout<< owo->empty()<<endl;
   cout<< owo->size()<<endl;
-  owo->clear();
+  owo->reverse();
   cout << owo->front() << endl;
+  /*owo->clear();
+  cout << owo->front() << endl;*/
+  cout << owo << endl;
   delete owo;
   return 0;
 }

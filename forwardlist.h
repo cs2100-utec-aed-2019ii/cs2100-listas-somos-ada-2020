@@ -24,7 +24,14 @@ public:
   void clear(void);
   ForwardList<T>& sort(void);
   ForwardList<T>& reverse(void);
-  friend std::ostream& operator<<(std::ostream& exit, const ForwardList<T>& element);
+  friend std::ostream& operator<<(std::ostream& exit, ForwardList<T>* element)
+  {
+    for(int i = 0; i < element->size(); i++)
+    {
+      exit << (*element)[i] << " ";
+    }
+    return exit;
+  }
 };
 
 template<typename T>
@@ -46,7 +53,7 @@ T ForwardList<T>::front(void)
   {
     return head->get_value();
   }
-  return NULL;
+  return 0;
 }
 
 template <typename T>
@@ -61,7 +68,7 @@ T ForwardList<T>::back(void)
     }
     return temp->get_value();
   }
-  return NULL;
+  return 0;
 }
 
 template <typename T>
@@ -99,7 +106,7 @@ void ForwardList<T>::push_front(const T& element)
 template<typename T>
 Node<T>* ForwardList<T>::pop_back(void)
 {
-   if(head==NULL) {
+ if(head==NULL) {
     return NULL;
   }
   else if(head->next==NULL){
@@ -114,13 +121,12 @@ Node<T>* ForwardList<T>::pop_back(void)
   temp2 = *temp1->next;
   delete temp1->next;
   temp1->next=NULL; 
-  return &temp2; 
+  return &temp2;     
 }
-
 template<typename T>
 Node<T>* ForwardList<T>::pop_front(void)
 {
-  if(head !=NULL){
+  if(head != NULL){
     Node<T> temp;
     temp=*head;
     Node<T> *aux_borrar;
@@ -186,13 +192,27 @@ ForwardList<T>& ForwardList<T>::sort(void)
 template<typename T>
 ForwardList<T>& ForwardList<T>::reverse(void)
 {
-    
+  Node<T> *aux1=head;
+  while(head->next!=NULL){
+    head=head->next;
+  }
+  
+  Node<T> *aux2;
+  Node<T> *aux3;
+  aux2 = aux1->next;
+  head->next = aux1;
+  aux1->next=NULL;
+  
+  while(aux2!=head){
+    aux3=aux2;
+    aux2=aux2->next;
+    head->next=aux3;
+    aux3->next=aux1;
+    aux1=aux3;
+  }
+  return *this;
 }
 
-template<typename T>
-std::ostream& operator<<(std::ostream& exit, const ForwardList<T>& element)
-{
 
-}
 
 #endif
