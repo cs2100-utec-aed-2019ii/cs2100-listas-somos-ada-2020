@@ -187,7 +187,42 @@ void ForwardList<T>::clear(void)
 template<typename T>
 ForwardList<T>& ForwardList<T>::sort(void)
 {
+  unsigned int contador=0;
+  Node<T> *temp = head;
+  Node<T> *temp_1 = head;
+  Node<T> *temp_2 = head;
+  while (temp!= NULL)
+  {
+    contador++;
+    temp = temp->next;
+  }
+  delete temp;
+  T a[contador];
 
+  for(int i = 0;i<contador;i++){
+    a[i]=temp_1->get_value();
+    temp_1 = temp_1->next;
+  }
+  delete temp_1;
+  
+  for(int i = 0;i<contador;i++){  
+    for (size_t j = 0; j <contador-1; j++)
+          {
+              if (a[j]>a[j+1])
+              {
+                  int temp1 = a[j+1];
+                  a[j+1]=a[j];
+                  a[j]=temp1;
+              }
+          }
+  }
+  
+  for(int i = 0;i<contador;i++){
+      temp_2->set_value(a[i]);
+      temp_2 = temp_2->next;
+    }
+  delete temp_2;
+  return *this;
 }
 template<typename T>
 ForwardList<T>& ForwardList<T>::reverse(void)
