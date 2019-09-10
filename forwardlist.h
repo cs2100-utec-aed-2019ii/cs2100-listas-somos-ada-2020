@@ -106,7 +106,7 @@ void ForwardList<T>::push_front(const T& element)
 template<typename T>
 Node<T>* ForwardList<T>::pop_back(void)
 {
- if(head==NULL) {
+  if(head==NULL) {
     return NULL;
   }
   else if(head->next==NULL){
