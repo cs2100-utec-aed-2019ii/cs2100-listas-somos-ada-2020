@@ -9,6 +9,16 @@ class Node
   public:
     Node(void){}
     virtual ~Node (void){}
+
+    void set_value(T valor)
+    {
+      value = valor;
+    }
+
+    T get_value()
+    {
+      return Node<T>::value;
+    }
 };
 
 #endif
