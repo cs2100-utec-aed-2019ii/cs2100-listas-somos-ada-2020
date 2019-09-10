@@ -28,11 +28,11 @@ class DoubleList : public List<T>{
     {
 
     } 
-    T& front(void)
+    T front(void)
     {
 
     }
-    T& back(void)
+    T back(void)
     {
 
     }

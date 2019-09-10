@@ -39,7 +39,7 @@ class ForwardList : public List<T>{
   }
   T back(void)
   {
-    ForwardListNode<T> *temp = (ForwardListNode<T>*)List<T>::head;
+    ForwardListNode<T> *temp = List<T>::head;
     if(temp)
     {
       while(temp->next)
@@ -55,30 +55,30 @@ class ForwardList : public List<T>{
   {
     if(List<T>::head)
     {
-      ForwardListNode<T> *temp = (ForwardListNode<T>*)List<T>::head;
+      ForwardListNode<T> *temp = List<T>::head;
       while(temp->next)
       {
         temp = temp->next;
       }
-      temp->next = new ForwardListNode<T>;
+      temp->next = new Node<T>;
       temp->next->set_value(element);
       tail = temp->next;
       return;
     }
-    List<T>::head = new ForwardListNode<T>;
+    List<T>::head = new Node<T>;
     List<T>::head->set_value(element);
-    tail = (ForwardListNode<T>*)List<T>::head;
+    tail = List<T>::head;
   }
   void push_front(const T& element)
   {
     if(List<T>::head)
     {
-      ForwardListNode<T> *temp = new ForwardListNode<T>;
-      temp->set_value(element);
-      ForwardListNode<T> *temp2 = (ForwardListNode<T>*)List<T>::head;
-      List<T>::head = temp;
-      ((ForwardListNode<T>*)List<T>::head)->next = temp2;
-      return;
+        ForwardListNode<T> *temp = new ForwardListNode<T>;
+        temp->set_value(element);
+        ForwardListNode<T> *temp2 = List<T>::head;
+        List<T>::head = temp;
+        List<T>::head->next = temp2;
+        return;
     }
     List<T>::head = new ForwardListNode<T>;
     List<T>::head->set_value(element);
@@ -89,14 +89,14 @@ class ForwardList : public List<T>{
     if(List<T>::head==NULL) {
       return NULL;
     }
-    else if(((ForwardListNode<T>*)List<T>::head)->next==NULL){
-      ForwardListNode<T> temp2 = *((ForwardListNode<T>*)List<T>::head);
+    else if(List<T>::head->next==NULL){
+      ForwardListNode<T> temp2 = *List<T>::head;
       delete List<T>::head;
       List<T>::head = NULL;
       tail = NULL;
       return &temp2;
     }
-    ForwardListNode<T> *temp1 = (ForwardListNode<T>*)List<T>::head;
+    ForwardListNode<T> *temp1 = List<T>::head;
     ForwardListNode<T> temp2;
     while (temp1->next->next) {
       temp1 = temp1->next;
@@ -111,11 +111,11 @@ class ForwardList : public List<T>{
   {
     if(List<T>::head != NULL){
       ForwardListNode<T> temp;
-      temp=*((ForwardListNode<T>*)List<T>::head);
+      temp=*List<T>::head;
       ForwardListNode<T> *aux_borrar;
-      aux_borrar=(ForwardListNode<T>*)List<T>::head;
+      aux_borrar=List<T>::head;
       
-      List<T>::head=((ForwardListNode<T>*)List<T>::head)->next;
+      List<T>::head=List<T>::head->next;
       delete aux_borrar;
       return &temp;
     }else{
@@ -128,7 +128,7 @@ class ForwardList : public List<T>{
     if(List<T>::head)
     {
       T temp2;
-      ForwardListNode<T> *temp = (ForwardListNode<T>*)List<T>::head;
+      ForwardListNode<T> *temp = List<T>::head;
       for(int i = 0; i < posicion; i++)
       {
         temp = temp->next;
@@ -149,7 +149,7 @@ class ForwardList : public List<T>{
   unsigned int size(void)
   {
     unsigned int size=0;
-    ForwardListNode<T> *temp=(ForwardListNode<T>*)List<T>::head;
+    ForwardListNode<T> *temp=List<T>::head;
     while(temp!=NULL){
       size++;
       temp=temp->next;
@@ -158,11 +158,11 @@ class ForwardList : public List<T>{
   }
   void clear(void)
   {
-    ForwardListNode<T> *aux=(ForwardListNode<T>*)List<T>::head;
+    ForwardListNode<T> *aux=List<T>::head;
     while(List<T>::head!=NULL) {
-      List<T>::head = ((ForwardListNode<T>*)List<T>::head)->next;
+      List<T>::head = List<T>::head->next;
       delete aux;
-      aux=(ForwardListNode<T>*)List<T>::head;
+      aux=List<T>::head;
     }
     List<T>::head = NULL;
     tail = NULL;
