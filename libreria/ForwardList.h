@@ -187,7 +187,25 @@ class ForwardList : public List<T>{
   }
   List<T>& reverse(void)
   {
-
+    ForwardListNode<T> *aux1 = (ForwardListNode<T>*)List<T>::head;
+    while(((ForwardListNode<T>*)List<T>::head)->next!=NULL){
+      List<T>::head = ((ForwardListNode<T>*)List<T>::head)->next;
+    }
+  
+    ForwardListNode<T> *aux2;
+    ForwardListNode<T> *aux3;
+    aux2 = aux1->next;
+    ((ForwardListNode<T>*)List<T>::head)->next = aux1;
+    aux1->next=NULL;
+  
+    while(aux2!=List<T>::head){
+      aux3=aux2;
+      aux2=aux2->next;
+      ((ForwardListNode<T>*)List<T>::head)->next=aux3;
+      aux3->next=aux1;
+      aux1=aux3;
+    }
+    return *this;
   }
 };
 
