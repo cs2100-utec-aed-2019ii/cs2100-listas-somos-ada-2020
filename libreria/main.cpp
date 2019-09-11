@@ -19,6 +19,8 @@ int main()
   cout << (*a)[1] << endl;
   a->pop_back();
   cout << a->back() << endl;
+  //a->pop_front();
+  //cout << a->front<<endl;
   //a->reverse();
   //cout << a->back() << endl;
   cout<<"Double list:\n";
