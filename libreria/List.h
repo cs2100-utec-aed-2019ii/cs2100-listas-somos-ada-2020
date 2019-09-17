@@ -37,8 +37,8 @@ class List {
         
     }
 
-    virtual T& front(void) = 0; // Retorna una referencia al primer elemento
-    virtual T& back(void) = 0; // Retorna una referencia al ultimo elemento
+    virtual T front(void) = 0; // Retorna una referencia al primer elemento
+    virtual T back(void) = 0; // Retorna una referencia al ultimo elemento
     
     virtual void push_back(const T& element) = 0; // Inserta un elemento al final
     virtual void push_front(const T& element) = 0; // Inserta un elemento al inicio

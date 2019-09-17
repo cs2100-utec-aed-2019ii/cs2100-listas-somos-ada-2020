@@ -5,11 +5,9 @@
 template <typename T>
 class DoubleListNode : public Node<T>
 {
-	protected:
+  public:
     Node<T> * next;
     Node<T> * prev;
-
-  public:
     DoubleListNode(void){}
     ~DoubleListNode(void){}
 };
