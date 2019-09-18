@@ -1,15 +1,17 @@
 #include <iostream>
 #include "./ForwardList.h"
 #include "./DoubleList.h"
-#include "./CircularList.h"
-/*#include "./DoubleCircularList.h"*/
+//#include "./CircularList.h"
+#include "./DoubleCircularList.h"
 using namespace std;
 
 int main()
-{ int a_[] = {1,2,3,4};
+{ 
+  int a_[] = {1,2,3,4};
   ForwardList<int> *a = new ForwardList<int>;
   DoubleList<int> *b = new DoubleList<int>;
-  CircularList<int> *c = new CircularList<int>(a_,4);
+  //CircularList<int> *c = new CircularList<int>;
+  DoubleCircularList<int> *d = new DoubleCircularList<int>;
   
   a->push_back(1);
   a->push_back(2);
@@ -38,20 +40,19 @@ int main()
   //cout << b->empty();
   //b->reverse();
   //cout << b->back() << endl;
-  cout<<"Circularlist:\n";
-  cout<< c->back()<<endl;
-  cout<< c->front()<<endl;
-  c->push_back(19);c->push_front(20);
-  cout<< c->back()<<endl;
-  cout<< c->front()<<endl;
-  *c<<21;*c>>22;
-cout<< c->back()<<endl;
-  cout<< c->front()<<endl;
-  c->clear();
-  cout<< c->back()<<endl;
-  cout<< c->front()<<endl;
+  cout << "Double Circular" << endl;
+  d->push_front(3);
+  d->push_front(4);
+  d->push_front(4);
+  d->push_back(5);
+  d->push_back(5);
+  cout << d->back() << endl;
+  cout << d->front() << endl;
+  d->drop(4);
+  cout << d->back() << endl;
+  cout << d->front() << endl;
   delete a;
   delete b;
-  delete c;
+  //delete c;
   return 0;
 }
