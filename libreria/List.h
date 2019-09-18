@@ -1,6 +1,8 @@
 #ifndef LIST_BASE
 #define LIST_BASE
 #include "./Node.h"
+#include <iostream>
+using namespace std;
 
 template <typename T>
 class List {
@@ -58,6 +60,23 @@ class List {
 
     virtual List<T>& sort(void) = 0; // ordena la lista
     virtual List<T>& reverse(void) = 0; // invierte la lista
+
+    template<typename _T>
+        inline friend ostream& operator<< (ostream& out, const List<_T>&){
+            out << "Nothing to print in father" << endl;
+            return out;
+        }
+
+        
+  List& operator<< (const T& _value){
+      this->push_back(_value);
+      return *this;
+  }
+  
+  List& operator>> (const T& _value){
+      this->push_front(_value);
+      return *this;
+  }
 };
 
 #endif
