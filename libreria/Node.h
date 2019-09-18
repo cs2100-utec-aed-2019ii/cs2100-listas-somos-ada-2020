@@ -1,6 +1,7 @@
 #ifndef NODO_BASE
 #define NODO_BASE
-
+#include<iostream>
+using namespace std;
 template <typename T>
 class Node
 {
@@ -19,6 +20,16 @@ class Node
     {
       return Node<T>::value;
     }
+    T& operator*(void){
+            return value;
+        }
+
+        template <typename _T>
+        inline friend ostream& operator<< (ostream& _out, const Node<_T>& _node){
+            _out << "Nodo: " <<  _node.value;
+            return _out;
+        }
+    
 };
 
 #endif

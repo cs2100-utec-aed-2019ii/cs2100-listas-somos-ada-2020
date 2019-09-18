@@ -6,11 +6,13 @@
 using namespace std;
 
 int main()
-{
+{ 
+  int a_[] = {1,2,3,4};
   ForwardList<int> *a = new ForwardList<int>;
   DoubleList<int> *b = new DoubleList<int>;
   //CircularList<int> *c = new CircularList<int>;
   DoubleCircularList<int> *d = new DoubleCircularList<int>;
+  
   a->push_back(1);
   a->push_back(2);
   a->push_back(3);
@@ -49,5 +51,8 @@ int main()
   d->drop(4);
   cout << d->back() << endl;
   cout << d->front() << endl;
+  delete a;
+  delete b;
+  //delete c;
   return 0;
 }

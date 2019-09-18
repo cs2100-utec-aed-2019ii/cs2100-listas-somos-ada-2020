@@ -185,27 +185,46 @@ public:
   }
   void insert(Node<T>* element, const T& position)
   {
-
+    if(HEAD)
+    {
+      DoubleListNode<T> *temp = DHEAD;
+      for(int i = 0; i < position; i++)
+      {
+        temp = temp->next;
+      }
+      D(element)->next = temp;
+      D(element)->prev = temp->prev;
+      temp->prev->next = D(element);
+      temp->prev = D(element);
+      if(position == 0)
+      {
+        HEAD = N(DHEAD->prev);
+      }
+      return;
+    }
+    HEAD = element;
+    DHEAD->next = DHEAD;
+    DHEAD->prev = DHEAD;
   }
   void drop(const T& item)
   {
     if(!HEAD){return;}
     int posicion = 0;
     DoubleListNode<T> *temp = DHEAD;
-    DoubleListNode<T> **temp2[size()];
+    DoubleListNode<T> *temp2[size()];
     do
     {
       if(temp->get_value() == item)
       {
-        temp2[posicion++] = &temp;
-        std::cout << "VALOR " << temp->get_value() << std::endl;
+        temp2[posicion++] = temp;
       }
       temp = temp->next;
     }
     while(temp != HEAD);
+    posicion--;
     while(posicion >= 0)
     {
-      erase(*temp2[posicion--]);
+      erase(temp2[posicion--]);
     }
   }
 
@@ -215,7 +234,7 @@ public:
   }
   List<T>& reverse(void)
   {
-
+    
   }
 };
 

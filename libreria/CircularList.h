@@ -18,8 +18,8 @@ class CircularList : public List<T>{
         }
     }
     CircularList(Node<T>* copia) : List<T>(copia)
-    {
-
+    { 
+   
     }
     CircularList(int numero_elementos) : List<T>(numero_elementos)
     {
@@ -67,13 +67,13 @@ class CircularList : public List<T>{
         }
         temp->next = new ForwardListNode<T>;
         temp->next->set_value(element);
-        ((ForwardListNode<T>*)temp->next)->next = List<T>::head;
+        ((ForwardListNode<T>*)temp->next)->next = (ForwardListNode<T>*)List<T>::head;
         return;
       }
       
       List<T>::head = new ForwardListNode<T>;
       List<T>::head->set_value(element);
-      ((ForwardListNode<T>*)List<T>::head)->next =List<T>::head; 
+      ((ForwardListNode<T>*)List<T>::head)->next =(ForwardListNode<T>*)List<T>::head; 
 
     }
 
@@ -90,15 +90,15 @@ class CircularList : public List<T>{
         ForwardListNode<T> *temp = new ForwardListNode<T>;
         temp->set_value(element);
         temp1->next = temp;
-        temp->next = List<T>::head;
+        temp->next = (ForwardListNode<T>*)List<T>::head;
         List<T>::head = temp;
 
-        ((ForwardListNode<T>*)temp1)->next = List<T>::head;
+        ((ForwardListNode<T>*)temp1)->next = (ForwardListNode<T>*)List<T>::head;
         return;
       }
       List<T>::head = new ForwardListNode<T>;
       List<T>::head->set_value(element);
-      ((ForwardListNode<T>*)List<T>::head)->next =List<T>::head; 
+      ((ForwardListNode<T>*)List<T>::head)->next =(ForwardListNode<T>*)List<T>::head; 
     }
 
     ForwardListNode<T>* pop_back(void)
@@ -118,7 +118,7 @@ class CircularList : public List<T>{
     }
     temp2 = *(ForwardListNode<T>*)temp1->next;
     delete temp1->next;
-    temp1->next=(Node<T>*)List<T>::head; 
+    temp1->next=(ForwardListNode<T>*)List<T>::head; 
     
     return &temp2; 
     }
@@ -136,7 +136,7 @@ class CircularList : public List<T>{
           temp1 = (ForwardListNode<T>*)temp1->next;  
         }
       List<T>::head=((ForwardListNode<T>*)List<T>::head)->next;
-        temp1->next = List<T>::head; 
+        temp1->next = (ForwardListNode<T>*)List<T>::head; 
       delete aux_borrar;
       return &temp;
     }else{
@@ -205,7 +205,7 @@ class CircularList : public List<T>{
           if(i == position){
           ForwardListNode<T>* temp1 = (ForwardListNode<T>* )temp;       
           temp = (ForwardListNode<T>* )temp->next;
-          temp1->next = element; 
+          temp1->next = (ForwardListNode<T>* )element; 
           ((ForwardListNode<T>* )element)->next = ((ForwardListNode<T>* )temp)->next; 
           break;
           }
