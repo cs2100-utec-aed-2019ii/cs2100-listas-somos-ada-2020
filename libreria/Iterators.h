@@ -25,18 +25,17 @@ public:
 		return **pointer;
 	}
 
-  virtual Iterator& operator++(void) const = 0;
+ 	virtual Iterator& operator++(void) const = 0;
 	virtual Iterator& operator++(int) const = 0;
 	virtual Iterator& operator--(void) const = 0;
 	virtual Iterator& operator--(int) const = 0;
 	
-  virtual bool operator == (const Iterator&) const = 0;
+    virtual bool operator == (const Iterator&) const = 0;
 	virtual bool operator != (const Iterator&) const = 0;
 	virtual bool operator <= (const Iterator&) const = 0;
 	virtual bool operator >= (const Iterator&) const = 0;
 	virtual bool operator < (const Iterator&) const = 0;
 	virtual bool operator > (const Iterator&) const = 0;
-	
 	virtual void operator=(const value_t&) = 0;
 
 };

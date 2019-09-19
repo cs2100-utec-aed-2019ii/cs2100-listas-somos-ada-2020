@@ -1,34 +1,45 @@
 #ifndef FORWARDLISTITERATOR_H
 #define FORWARDLISTITERATOR_H
-#include "Iterators.h"
+#include "./ForwardListNode.h"
+#include "List.h"
+#include "IteratorForward.h"
 
 template <typename T>
-class ForwardListIterator:public Iterator<T> {
-
-    
+class ForwardListIterator:public List<T> {
 
 
-ForwardListIterator(ForwardListIterator &copia) 
+protected:
+  ForwardListNode<T> *tail;
+  public:
+  ForwardListIterator(ForwardListIterator &copia) : List<T>(copia)
   {
 
   }
-ForwardListIterator(T* arreglo, int size) 
+  ForwardListIterator(T* arreglo, int size) : List<T>(arreglo, size)
   {
 
   }
-ForwardListIterator(Node<T>* copia) 
+  ForwardListIterator(Node<T>* copia) : List<T>(copia)
   {
 
   }
-ForwardListIterator(int numero_elementos) 
+  ForwardListIterator(int numero_elementos) : List<T>(numero_elementos)
   {
 
-  } 
-ForwardListIterator()
+  }
+
+  ForwardListIterator()
   {
     List<T>::head = NULL;
     tail = NULL;
-  } 
+  }
+
+    IteratorForward<T> begin(){
+        return IteratorForward<T>(List<T>::head) ;
+    }
+    IteratorForward<T> end (){
+        return IteratorForward<T>(tail);
+    }
 
   T front(void)
   {
@@ -208,10 +219,6 @@ ForwardListIterator()
     }
     return *this;
   }
-
-
-
-
      
          
 };
