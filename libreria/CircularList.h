@@ -200,16 +200,6 @@ class CircularList : public List<T>{
     }
     void insert(Node<T>* element, const T& position)
     {
-        ForwardListNode<T> *temp = (ForwardListNode<T> *)List<T>::head;
-        for (int i = 0; i < size(); i++){ 
-          if(i == position){
-          ForwardListNode<T>* temp1 = (ForwardListNode<T>* )temp;       
-          temp = (ForwardListNode<T>* )temp->next;
-          temp1->next = (ForwardListNode<T>* )element; 
-          ((ForwardListNode<T>* )element)->next = ((ForwardListNode<T>* )temp)->next; 
-          break;
-          }
-        }
     }
     void drop(const T& item)
     { 
