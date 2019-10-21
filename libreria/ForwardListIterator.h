@@ -1,8 +1,7 @@
 #ifndef FORWARDLISTITERATOR_H
 #define FORWARDLISTITERATOR_H
 #include "./ForwardListNode.h"
-#include "List.h"
-#include "IteratorForward.h"
+#include "ForwardList.h"
 
 template<typename Node>
 class Iterator_Base {
